@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  frontend:
+    build: ./taladpla-web
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./back-end
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: Thesums@41
+      POSTGRES_DB: taladpla
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
