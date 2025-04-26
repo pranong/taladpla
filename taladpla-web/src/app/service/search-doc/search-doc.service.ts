@@ -10,7 +10,7 @@ export class SearchDocService {
     return this.http.get(`${this.baseUrl}/users`);
   }
 
-  private baseUrl = 'http://db:3000/api';
+  private baseUrl = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) { }
 
