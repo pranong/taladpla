@@ -1,13 +1,16 @@
 version: "3.8"
 services:
   frontend:
+    container_name: frontend
     build: ./taladpla-web
     ports:
-      - "4200:4200"
+      - "4200:80"
+      # - "4200:4200"
     depends_on:
       - backend
 
   backend:
+    container_name: backend
     build: ./taladpla-app
     ports:
       - "3000:3000"
