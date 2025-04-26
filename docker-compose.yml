@@ -8,7 +8,7 @@ services:
       - backend
 
   backend:
-    build: ./back-end
+    build: ./taladpla-app
     ports:
       - "3000:3000"
     depends_on:
