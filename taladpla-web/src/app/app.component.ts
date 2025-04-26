@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   constructor(private api: SearchDocService) { }
 
   ngOnInit() {
-    this.api.getMessage().subscribe(data => {
+    this.api.getVersion().subscribe(data => {
       this.message = data.message;
     });
 
@@ -21,5 +21,11 @@ export class AppComponent implements OnInit {
       console.log('data.result', data)
       this.messageDb = data.message
     });
+  }
+
+  isExpanded = true;
+
+  toggleSidebar() {
+    this.isExpanded = !this.isExpanded;
   }
 }

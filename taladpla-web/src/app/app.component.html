@@ -1,10 +1,46 @@
+<div class="flex h-screen">
+  <!-- Sidebar -->
+  <nav [class.w-64]="isExpanded" [class.w-20]="!isExpanded"
+    class="bg-gray-800 text-white flex flex-col justify-between transition-all duration-300 overflow-hidden">
+    <!-- Top -->
+    <div class="p-4">
+      <button (click)="toggleSidebar()" class="mb-6 focus:outline-none">
+        <svg *ngIf="isExpanded" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 18L18 6M6 6l12 12" />
+        </svg>
+        <svg *ngIf="!isExpanded" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
 
-response: {{message}}
-responseDb: {{messageDb}}
+      <div *ngIf="isExpanded" class="text-2xl font-bold mb-10">My App</div>
 
-<nav>
-  <a routerLink="/" routerLinkActive="active">Home</a> |
-  <a routerLink="/create-document" routerLinkActive="active">Create Document</a>
-</nav>
+      <a routerLink="/" routerLinkActive="bg-gray-700" class="flex items-center p-2 rounded hover:bg-gray-700 mb-2">
+        <span class="material-icons mr-2">home</span>
+        <span *ngIf="isExpanded">Home</span>
+      </a>
 
-<router-outlet></router-outlet>
+      <a routerLink="/create-document" routerLinkActive="bg-gray-700"
+        class="flex items-center p-2 rounded hover:bg-gray-700 mb-2">
+        <span class="material-icons mr-2">drafts</span>
+        <span *ngIf="isExpanded">Create Doc.</span>
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <div class="p-4 text-xs text-gray-400">
+      <span *ngIf="isExpanded">Taladpla 1.0</span>
+      <span *ngIf="!isExpanded">TP 1.0</span>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="flex-1 bg-gray-100 p-6 overflow-auto">
+    response: {{message}}
+    responseDb: {{messageDb}}
+    <router-outlet></router-outlet>
+  </main>
+</div>
+

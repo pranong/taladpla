@@ -14,14 +14,14 @@ router.get('/', (req, res) => {
     })
 })
   
-router.get('/message', (req, res) => {
+router.get('/version', (req, res) => {
     res.send({
       status: true,
       message: 'welcome to app'
     })
 })
   
-router.get('/users', async (req, res) => {
+router.get('/db-status', async (req, res) => {
     try {
       let rows = await knex('settings')
       res.send({

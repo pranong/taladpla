@@ -1,0 +1,21 @@
+<div #dragArea (mouseleave)="onMouseUpOnItem(-1)" class="drag-container">
+    <table class="table-auto w-full border-collapse">
+        <thead class="bg-gray-200">
+            <th class="px-4 py-2">Name</th>
+            <th class="px-4 py-2">Age</th>
+        </thead> 
+        <tbody>
+            <tr *ngFor="let item of items; let i = index" class="border-t selectable-item"
+                [ngClass]="item?.isSelected ? 'selectable-item-selected':''" (mouseup)="onMouseUpOnItem(i)"
+                (mousedown)="onMouseDownOnItem(i)" (mouseenter)="onMouseEnterOnItem(i)">
+                <td class="px-4 py-2">{{ item.name }}</td>
+                <td class="px-4 py-2">{{ item.age }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- <div *ngFor="let item of items; let i = index" class="selectable-item"
+        [ngClass]="item?.isSelected ? 'selectable-item-selected':''"
+        (mouseup)="onMouseUpOnItem(i)"
+        (mousedown)="onMouseDownOnItem(i)"
+        (mouseenter)="onMouseEnterOnItem(i)">{{ item }}</div> -->
+</div>

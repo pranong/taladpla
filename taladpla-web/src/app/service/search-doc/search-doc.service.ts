@@ -10,11 +10,12 @@ export class SearchDocService {
     return this.http.get(`${this.baseUrl}/users`);
   }
 
-  private baseUrl = 'http://139.59.219.248:3000/api';
+  // private baseUrl = 'http://139.59.219.248:3000/api';
+  private baseUrl = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) { }
 
-  getMessage(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/message`);
+  getVersion(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/version`);
   }
 }
