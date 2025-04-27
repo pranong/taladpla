@@ -10,19 +10,42 @@ export class CreateDocumentComponent implements OnInit {
 
   constructor() { }
 
-  rowList: any[] = [
-    { name: 'John', age: 25 },
-    { name: 'Jane', age: 30 },
-    { name: 'Jake', age: 28 },
-    { name: 'Jill', age: 22 },
-  ];
+  rowList: any[] = [];
+
+  tableConfig: any[] = [
+    {
+      columnType: "checkBox",
+      columnName: '',
+      valueKey: "isSelected",
+      style: "",
+    },
+    {
+      columnType: "text",
+      columnName: 'Name',
+      valueKey: "name",
+      style: "",
+    },
+    {
+      columnType: "text",
+      columnName: 'Age',
+      valueKey: "age",
+      style: "",
+    },
+    // {
+    //   columnType: "input",
+    //   valueKey: "isSelected",
+    //   style: "",
+    // },
+  ]
 
   ngOnInit(): void {
-    
+    for (let i = 0; i < 123; i++) {
+      this.rowList[i] = {
+        isSelected: false,
+        name: `Name ${i + 1}`,
+        age: `Age ${i + 1}`
+      }
+    }
   }
 
-  dragableTableResult($event: any) {
-    console.log('callback: dragableTableResult', $event)
-    console.log('rowList', this.rowList)
-  }
 }

@@ -15,7 +15,7 @@
         </svg>
       </button>
 
-      <div *ngIf="isExpanded" class="text-2xl font-bold mb-10">My App</div>
+      <div *ngIf="isExpanded" class="text-2xl font-bold mb-10">Taladpla</div>
 
       <a routerLink="/" routerLinkActive="bg-gray-700" class="flex items-center p-2 rounded hover:bg-gray-700 mb-2">
         <span class="material-icons mr-2">home</span>
@@ -31,15 +31,16 @@
 
     <!-- Footer -->
     <div class="p-4 text-xs text-gray-400">
-      <span *ngIf="isExpanded">Taladpla 1.0</span>
+      <span *ngIf="isExpanded">Taladpla 1.0
+        response: {{message}}
+        responseDb: {{messageDb}}
+      </span>
       <span *ngIf="!isExpanded">TP 1.0</span>
     </div>
   </nav>
 
   <!-- Main Content -->
   <main class="flex-1 bg-gray-100 p-6 overflow-auto">
-    response: {{message}}
-    responseDb: {{messageDb}}
     <router-outlet></router-outlet>
   </main>
 </div>

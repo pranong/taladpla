@@ -7,13 +7,17 @@ import { Component, OnInit, HostListener, ViewChild, ElementRef, Input, Output, 
 })
 export class DragableTableComponent implements OnInit {
   @ViewChild('dragArea') myDiv!: ElementRef;
-  @Input() set dataList(value: any) {
-    this.items = value;
-  }
-  @Output() eventResult = new EventEmitter<any>(); // Will emit when clicked outside
 
+  @Input() items: any[] = [];
+  @Input() currentPage: number = 1;
+  @Input() pageSize: number = 10;
+  @Input() tableConfig: any[] = [];
+
+  @Output() eventResult = new EventEmitter<any>();
 
   constructor() { }
+
+  
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
@@ -25,12 +29,7 @@ export class DragableTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    for (let id = 0; id < 12; id++) {
-      this.documents.push({
-        id,
-        name: `Document ${id}`,
-      });
-    }
+
   }
 
   documents: any[] = [];
@@ -39,12 +38,7 @@ export class DragableTableComponent implements OnInit {
   isMouseDown: boolean = false;
   firstDraggedItemIndex: number = -1;
   lastDraggedItemIndex: any = -1;
-  items: any[] = [
-    { name: 'John', age: 25 },
-    { name: 'Jane', age: 30 },
-    { name: 'Jake', age: 28 },
-    { name: 'Jill', age: 22 },
-  ];
+
 
   clearAllSelect() {
     this.items.map(e => {
