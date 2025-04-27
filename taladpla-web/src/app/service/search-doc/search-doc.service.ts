@@ -6,9 +6,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SearchDocService {
-  getDB(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/users`);
-  }
 
   private baseUrl = 'http://139.59.219.248:3000/api';
   // private baseUrl = 'http://localhost:3000/api';
@@ -17,5 +14,12 @@ export class SearchDocService {
 
   getVersion(): Observable<any> {
     return this.http.get(`${this.baseUrl}/version`);
+  }
+  getDB(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/users`);
+  }
+
+  onSearchByCriteria(req: { name: string; }): Observable<any> {
+    return this.http.post(`${this.baseUrl}/onSearchByCriteria`, req);
   }
 }

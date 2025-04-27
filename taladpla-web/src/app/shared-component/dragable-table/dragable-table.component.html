@@ -1,15 +1,15 @@
-<div #dragArea (mouseleave)="onMouseUpOnItem(-1)" class="drag-container">
-    <table class="table-auto w-full border-collapse">
-        <thead class="bg-gray-200">
-            <th *ngFor="let conf of tableConfig; let cidx = index" class="px-4 py-2">
+<div #dragArea (mouseleave)="onMouseUpOnItem(-1)" class="drag-container relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="table-auto w-full border-collapse w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-800 uppercase bg-gray-50 dark:bg-gray-300 dark:text-gray-800">
+            <th *ngFor="let conf of tableConfig; let cidx = index" scope="col" class="px-4 py-2 text-xs">
                 {{conf.columnName}}
             </th>
         </thead> 
         <tbody>
-            <tr *ngFor="let item of items; let i = index" class="border-t selectable-item"
+            <tr *ngFor="let item of items; let i = index" class="border-t selectable-item text-xs bg-white border-b dark:text-gray-700 dark:bg-gray-100 dark:border-gray-1000 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-200"
                 [ngClass]="item?.isSelected ? 'selectable-item-selected':''" (mouseup)="onMouseUpOnItem(i)"
                 (mousedown)="onMouseDownOnItem(i)" (mouseenter)="onMouseEnterOnItem(i)">
-                <td *ngFor="let confValue of tableConfig" class="px-4 py-2">
+                <td *ngFor="let confValue of tableConfig" class="px-2 py-1 text-xs">
                     {{item[confValue.valueKey]}}
                 </td>
             </tr>

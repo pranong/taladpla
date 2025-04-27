@@ -31,7 +31,7 @@
 </div> -->
 
 <div class="grid grid-cols-12 grid-rows-1 gap-4">
-    <div *ngIf="location == 'top'" class="col-span-3" style="margin-bottom: 10px;">
+    <div *ngIf="location == 'top'" class="col-span-3" style="font-size: 10px">
         <div class="pagination">
             <label for="pageSize">Rows per page: </label>
             <select id="pageSize" [value]="pageSize" (change)="onPageSizeChange($event)">
@@ -39,15 +39,57 @@
             </select>
         </div>
     </div>
-    <div *ngIf="location == 'bottom'" class="col-span-3" style="margin-bottom: 10px;">
+    <div *ngIf="location == 'bottom'" class="col-span-3" style="font-size: 10px">
         <div class="pagination">
             {{showingRange}}
         </div>
     </div>
-    <div class="col-span-7 col-start-6">
-        <div class="pagination">
-            <div class="grid grid-cols-12 grid-rows-1 gap-4">
-                <div class="col-span-3">
+    <div class="col-span-9 col-start-4">
+        <div class="pagination flex justify-end w-full">
+                    <!-- <div class="inline-flex rounded-md shadow-xs">
+                        <button (click)="firstPage()" [disabled]="currentPage === 1">«</button>
+                        <button (click)="previousPage()" [disabled]="currentPage === 1">‹</button>
+                        <button *ngFor="let page of generatePageNumbers()" (click)="goToPage(+page)" [class.active]="currentPage === page"
+                            [disabled]="page == '...'">
+                            {{ page }}
+                        </button>
+                        <button (click)="nextPage()" [disabled]="currentPage === totalPages">›</button>
+                        <button (click)="lastPage()" [disabled]="currentPage === totalPages">»</button>
+                    </div> -->
+
+                <div class="row flex">
+                    <button
+                        class="rounded-md text-xs rounded-r-none py-1 px-2 text-center text-xs transition-all hover:shadow-lg text-slate-600 hover:text-white hover:bg-slate-800 focus:text-white focus:bg-slate-800 active:text-white active:bg-slate-800 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                        type="button"
+                        (click)="firstPage()" [disabled]="currentPage === 1">
+                        «
+                    </button>
+                    <button
+                        class="rounded-none text-xs border-l border-r border-slate-300 py-1 px-2 text-center text-xs transition-all hover:shadow-lg text-slate-600 hover:text-white hover:bg-slate-800 hover:border-slate-800 focus:text-white focus:bg-slate-800 focus:border-slate-800 active:border-slate-800 active:text-white active:bg-slate-800 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                        type="button"
+                        (click)="previousPage()" [disabled]="currentPage === 1">
+                        ‹
+                    </button>
+
+                    <button type="button" class="rounded-none text-xs border-r border-slate-300 py-1 px-2 text-center text-xs transition-all hover:shadow-lg text-slate-600 hover:text-white hover:bg-slate-800 hover:border-slate-800 focus:text-white focus:bg-slate-800 focus:border-slate-800 active:border-slate-800 active:text-white active:bg-slate-800 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" *ngFor="let page of generatePageNumbers()" (click)="goToPage(+page)" [class.active]="currentPage === page"
+                        [disabled]="page == '...'" [class.active]="currentPage === page">
+                        {{ page }}
+                    </button>
+                    
+                    <button
+                        class="rounded-none text-xs border-r border-slate-300 py-1 px-2 text-center text-xs transition-all hover:shadow-lg text-slate-600 hover:text-white hover:bg-slate-800 hover:border-slate-800 focus:text-white focus:bg-slate-800 focus:border-slate-800 active:border-slate-800 active:text-white active:bg-slate-800 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                        type="button"
+                        (click)="nextPage()" [disabled]="currentPage === totalPages">
+                        ›
+                    </button>
+                    <button
+                        class="rounded-md text-xs rounded-l-none py-1 px-2 text-center text-xs transition-all hover:shadow-lg text-slate-600 hover:text-white hover:bg-slate-800 focus:text-white focus:bg-slate-800 active:text-white active:bg-slate-800 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                        type="button"
+                        (click)="lastPage()" [disabled]="currentPage === totalPages">
+                        »
+                    </button>
+
+                <!-- <div class="col-span-3">
                     <button (click)="firstPage()" [disabled]="currentPage === 1">«</button>
                     <button (click)="previousPage()" [disabled]="currentPage === 1">‹</button>
                 </div>
@@ -60,7 +102,7 @@
                 <div class="col-span-3 col-start-10">
                     <button (click)="nextPage()" [disabled]="currentPage === totalPages">›</button>
                     <button (click)="lastPage()" [disabled]="currentPage === totalPages">»</button>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
