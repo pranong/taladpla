@@ -16,10 +16,21 @@ export class TlpPaginatorComponent implements OnInit {
   @Input() currentPage: number = 1;
   @Input() totalPages: number = 1;
   @Input() pageSize: number = 10;
+  @Input() totalItems: number = 0;
   @Input() pageSizes: number[] = [10, 50, 100, 1000];
 
   @Output() pageChange = new EventEmitter<number>();
   @Output() pageSizeChange = new EventEmitter<number>();
+
+  get showingRange(): string {
+    if (this.totalItems === 0) {
+      return 'Showing 0 to 0 of 0 entries';
+    }
+
+    const start = (this.currentPage - 1) * this.pageSize + 1;
+    const end = Math.min(this.currentPage * this.pageSize, this.totalItems);
+    return `Showing ${start} to ${end} of ${this.totalItems} entries`;
+  }
 
   nextPage() {
     if (this.currentPage < this.totalPages) {

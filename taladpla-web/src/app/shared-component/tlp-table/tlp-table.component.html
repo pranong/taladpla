@@ -1,9 +1,9 @@
-<tlp-paginator [location]="'top'" [currentPage]="currentPage" [totalPages]="totalPages" [pageSize]="pageSize" [pageSizes]="pageSizes"
+<tlp-paginator [location]="'top'" [totalItems]="pagedItems.length" [currentPage]="currentPage" [totalPages]="totalPages" [pageSize]="pageSize" [pageSizes]="pageSizes"
     (pageChange)="onPageChange($event)" (pageSizeChange)="onPageSizeChange($event)">
 </tlp-paginator>
 
 <tpl-dragable-table [items]="pagedItems" [currentPage]="currentPage" [pageSize]="pageSize" [tableConfig]="tableConfig"></tpl-dragable-table>
 
-<tlp-paginator [location]="'bottom'" [currentPage]="currentPage" [totalPages]="totalPages" [pageSize]="pageSize" [pageSizes]="pageSizes"
+<tlp-paginator [location]="'bottom'"[totalItems]="items.length"  [currentPage]="currentPage" [totalPages]="totalPages" [pageSize]="pageSize" [pageSizes]="pageSizes"
     (pageChange)="onPageChange($event)" (pageSizeChange)="onPageSizeChange($event)">
 </tlp-paginator>
