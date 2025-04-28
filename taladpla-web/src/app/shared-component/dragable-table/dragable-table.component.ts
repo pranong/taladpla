@@ -11,7 +11,17 @@ export class DragableTableComponent implements OnInit {
   @Input() items: any[] = [];
   @Input() currentPage: number = 1;
   @Input() pageSize: number = 10;
-  @Input() tableConfig: any[] = [];
+  @Input() 
+  set tableConfigParam(value: any[]) {
+    this.tableConfig = value
+    for (let i = 0; i < value.length; i++) {
+      const element = value[i];
+      this.searchVisible[element.valueKey] = false
+      this.searchText[element.valueKey] = ''
+      this.sortStatus[element.valueKey] = 'normal'
+    }
+  };
+  tableConfig: any[] = []
 
   @Output() eventResult = new EventEmitter<any>();
 
@@ -93,5 +103,41 @@ export class DragableTableComponent implements OnInit {
       this.items[itemIndex].isSelected = !this.items[itemIndex].isSelected ? true : this.items[itemIndex].isSelected;
     }
     this.eventResult.emit(this.items);
+  }
+
+
+
+
+  // filteredData: any[] = [...this.originalData]; // we manually control filtering
+
+  searchVisible: { [key: string]: boolean } = {};
+  searchText: { [key: string]: string } = {};
+  sortStatus: { [key: string]: string } = {};
+
+  toggleSearch(columnData: any): void {
+    this.searchVisible[columnData.valueKey] = !this.searchVisible[columnData.valueKey];
+  }
+  toggleSort(columnData: any): void {
+    if (this.sortStatus[columnData.valueKey] == 'asc') {
+      this.sortStatus[columnData.valueKey] = 'normal'
+    } else if (this.sortStatus[columnData.valueKey] == 'desc') {
+      this.sortStatus[columnData.valueKey] = 'asc'
+    } else if (this.sortStatus[columnData.valueKey] == 'normal') {
+      this.sortStatus[columnData.valueKey] = 'desc'
+    }
+    this.applySort(columnData.valueKey)
+  }
+
+  clearSearch(column: string): void {
+    this.searchText[column] = '';
+    this.searchVisible[column] = false;
+    this.applyFilter();
+  }
+
+  applyFilter(): void {
+    this.eventResult.emit({type: 'filterColumn', data: this.searchText });
+  }
+  applySort(column: string): void {
+    this.eventResult.emit({type: 'sortColumn', data: {sortType: this.sortStatus[column], column} });
   }
 }

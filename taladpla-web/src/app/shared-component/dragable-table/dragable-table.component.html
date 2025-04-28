@@ -1,8 +1,32 @@
 <div #dragArea (mouseleave)="onMouseUpOnItem(-1)" class="drag-container relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="table-auto w-full border-collapse w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-800 uppercase bg-gray-50 dark:bg-gray-300 dark:text-gray-800">
-            <th *ngFor="let conf of tableConfig; let cidx = index" scope="col" class="px-4 py-2 text-xs">
-                {{conf.columnName}}
+            <th *ngFor="let conf of tableConfig; let cidx = index" scope="col" class="px-2 py-1 text-xs">
+                <div *ngIf="conf.sortable && !searchVisible[conf.valueKey]" class="flex items-center" >
+                    <span class="material-icons text-gray-900 hover:text-gray-1000 text-base pr-2 cursor-pointer float-right"
+                        (click)="toggleSearch(conf)">
+                        search
+                    </span>
+
+                    <div class="text-xs">{{conf.columnName}}</div>
+
+                    <span class="material-icons text-gray-900 hover:text-gray-1000 text-base pl-2 cursor-pointer" (click)="toggleSort(conf)">
+                        unfold_more
+                    </span>
+                </div>
+                <div *ngIf="conf.searchable && searchVisible[conf.valueKey]">
+                    <div class="relative w-full">
+                        <input type="text" id="voice-search" [(ngModel)]="searchText[conf.valueKey]" 
+                            class="bg-white-50 border border-gray-300 text-gray-900 text-xs rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full ps-5 p-1"
+                            placeholder="Search..." (input)="applyFilter()" />
+                        <button type="button" class="absolute inset-y-0 end-0 flex items-center pe-3" (click)="clearSearch(conf.valueKey)">
+                            <span class="material-icons text-gray-700 hover:text-gray-900 text-base pl-2 cursor-pointer">
+                                close
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <!-- {{conf.columnName}} -->
             </th>
         </thead> 
         <tbody>
@@ -14,5 +38,10 @@
                 </td>
             </tr>
         </tbody>
+        <tfoot>
+            <tr>
+                <td class="h-3"></td>
+            </tr>
+        </tfoot>
     </table>
 </div>

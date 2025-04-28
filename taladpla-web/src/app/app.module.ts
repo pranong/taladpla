@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { CreateDocumentComponent } from './create-document/create-document.component';
@@ -16,7 +17,7 @@ import { DragToSelectModule } from 'ngx-drag-to-select';
 
 @NgModule({
   declarations: [AppComponent, CreateDocumentComponent, MainComponent, DragableTableComponent, TlpTableComponent, TlpPaginatorComponent],
-  imports: [BrowserModule, RouterModule, AppRoutingModule, HttpClientModule, DragToSelectModule],
+  imports: [BrowserModule, RouterModule, AppRoutingModule, HttpClientModule, DragToSelectModule,FormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -7,6 +7,14 @@
     padding-bottom: 10px;
 }
 
+.pagination-top {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 17px;
+}
+
 /* button {
     min-width: 25px;
     height: 25px;

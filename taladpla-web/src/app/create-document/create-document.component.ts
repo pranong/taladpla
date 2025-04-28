@@ -19,18 +19,32 @@ export class CreateDocumentComponent implements OnInit {
       columnType: "checkBox",
       columnName: '',
       valueKey: "isSelected",
+      sortable: false,
+      searchable: false,
+      style: "",
+    },
+    {
+      columnType: "text",
+      columnName: 'Reciept No.',
+      valueKey: "poId",
+      sortable: true,
+      searchable: true,
       style: "",
     },
     {
       columnType: "text",
       columnName: 'Name',
       valueKey: "name",
+      sortable: true,
+      searchable: true,
       style: "",
     },
     {
       columnType: "text",
       columnName: 'Age',
       valueKey: "age",
+      sortable: true,
+      searchable: true,
       style: "",
     },
     // {
@@ -54,6 +68,7 @@ export class CreateDocumentComponent implements OnInit {
         for (let i = 0; i < 123; i++) {
           this.rowList[i] = {
             isSelected: false,
+            poId: 'PO' + i.toString().padStart(4, '0'),
             name: `Name ${i + 1}`,
             age: `Age ${i + 1}`
           }
@@ -64,6 +79,7 @@ export class CreateDocumentComponent implements OnInit {
         for (let i = 0; i < 123; i++) {
           this.rowList[i] = {
             isSelected: false,
+            poId: 'PO' + i.toString().padStart(4, '0'),
             name: `Name ${i + 1}`,
             age: `Age ${i + 1}`
           }
@@ -73,6 +89,7 @@ export class CreateDocumentComponent implements OnInit {
     for (let i = 0; i < 123; i++) {
       this.rowList[i] = {
         isSelected: false,
+        poId: 'PO' + i.toString().padStart(4, '0'),
         name: `Name ${i + 1}`,
         age: `Age ${i + 1}`
       }
