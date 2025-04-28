@@ -14,45 +14,7 @@ export class CreateDocumentComponent implements OnInit {
 
   rowList: any[] = [];
 
-  tableConfig: any[] = [
-    {
-      columnType: "checkBox",
-      columnName: '',
-      valueKey: "isSelected",
-      sortable: false,
-      searchable: false,
-      style: "",
-    },
-    {
-      columnType: "text",
-      columnName: 'Reciept No.',
-      valueKey: "poId",
-      sortable: true,
-      searchable: true,
-      style: "",
-    },
-    {
-      columnType: "text",
-      columnName: 'Name',
-      valueKey: "name",
-      sortable: true,
-      searchable: true,
-      style: "",
-    },
-    {
-      columnType: "text",
-      columnName: 'Age',
-      valueKey: "age",
-      sortable: true,
-      searchable: true,
-      style: "",
-    },
-    // {
-    //   columnType: "input",
-    //   valueKey: "isSelected",
-    //   style: "",
-    // },
-  ]
+  tableConfig: any[] = []
 
   ngOnInit(): void {
     
@@ -65,16 +27,89 @@ export class CreateDocumentComponent implements OnInit {
     try {
       this.api.onSearchByCriteria(req).subscribe(data => {
         console.log('data', data)
-        for (let i = 0; i < 123; i++) {
-          this.rowList[i] = {
-            isSelected: false,
-            poId: 'PO' + i.toString().padStart(4, '0'),
-            name: `Name ${i + 1}`,
-            age: `Age ${i + 1}`
-          }
-        }
+        this.rowList = data.rows
+        // for (let i = 0; i < 123; i++) {
+        //   this.rowList[i] = {
+        //     isSelected: false,
+        //     poId: 'PO' + i.toString().padStart(4, '0'),
+        //     name: `Name ${i + 1}`,
+        //     age: `Age ${i + 1}`
+        //   }
+        // }
+        this.tableConfig = [
+          {
+            columnType: "checkBox",
+            columnName: '',
+            valueKey: "isSelected",
+            sortable: false,
+            searchable: false,
+            style: "",
+          },
+          {
+            columnType: "text",
+            columnName: 'Reciept No.',
+            valueKey: "poId",
+            sortable: true,
+            searchable: true,
+            style: "",
+          },
+          {
+            columnType: "text",
+            columnName: 'Item Name',
+            valueKey: "equipmentName",
+            sortable: true,
+            searchable: true,
+            style: "",
+          },
+          {
+            columnType: "text",
+            columnName: 'Vendor Code',
+            valueKey: "vendorCode",
+            sortable: true,
+            searchable: true,
+            style: "",
+          },
+          {
+            columnType: "text",
+            columnName: 'Vendor Name',
+            valueKey: "vendorName",
+            sortable: true,
+            searchable: true,
+            style: "",
+          },
+          {
+            columnType: "text",
+            columnName: 'Price Post VAT',
+            valueKey: "pricePostVat",
+            sortable: true,
+            searchable: true,
+            style: "",
+          },
+          {
+            columnType: "text",
+            columnName: 'Price Pre VAT',
+            valueKey: "pricePreVat",
+            sortable: true,
+            searchable: true,
+            style: "",
+          },
+          {
+            columnType: "text",
+            columnName: 'Issued By',
+            valueKey: "poIssueBy",
+            sortable: true,
+            searchable: true,
+            style: "",
+          },
+          // {
+          //   columnType: "input",
+          //   valueKey: "isSelected",
+          //   style: "",
+          // },
+        ]
       }, error => {
         console.log('on error subscribe', error.message)
+        //toast
       });
     } catch (error) {
       console.log('error', error)
