@@ -20,6 +20,22 @@ router.get('/version', (req, res) => {
       message: 'welcome to app'
     })
 })
+
+router.post('/onSearchByCriteria', async (req, res) => {
+  console.log('res', res)
+  try {
+    let rows = await knex('trn_po_dtl');
+    res.send({
+      status: true,
+      rows,
+    });
+  } catch (error) {
+    res.send({
+      status: false,
+      message: error,
+    });
+  }
+});
   
 router.get('/db-status', async (req, res) => {
     try {

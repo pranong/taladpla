@@ -73,6 +73,8 @@ export class CreateDocumentComponent implements OnInit {
             age: `Age ${i + 1}`
           }
         }
+      }, error => {
+        console.log('on error subscribe', error.message)
       });
     } catch (error) {
       console.log('error', error)
