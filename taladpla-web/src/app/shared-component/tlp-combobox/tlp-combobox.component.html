@@ -1,0 +1,27 @@
+<!-- <div #comboArea> -->
+    <button #comboBtnArea [id]="'dropdownDefaultButton_' + optionKey" data-dropdown-toggle="dropdown"
+        (click)="onClickDropdown()"
+        class="w-full text-gray-900 bg-gray-50 border border-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-2.5 py-1 text-center inline-flex items-center"
+        type="button">Please select
+        <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+        </svg>
+    </button>
+    <!-- Dropdown menu -->
+    <div class="relative text-left pt-1">
+        <div id="dropdown" [class.hidden]="!toggleStatus"
+            class="absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-full light:bg-gray-700">
+            <ul #comboArea class="py-2 text-xs text-gray-700 light:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                <li class="px-2 py-1">
+                    <input type="text" id="company" (input)="onChangeTextBox()" [(ngModel)]="textBoxData"
+                        class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+                        placeholder="Search" />
+                </li>
+                <li *ngFor="let option of options;" (click)="onSelectDropdown(option)">
+                    <a href="#"
+                        class="block px-4 py-1 hover:bg-gray-100 light:hover:bg-gray-600 light:hover:text-white">{{option.name}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+<!-- </div> -->

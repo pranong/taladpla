@@ -14,9 +14,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 
 import { DragToSelectModule } from 'ngx-drag-to-select';
+import { SearchDocumentComponent } from './search-document/search-document.component';
+import { TlpComboboxComponent } from './shared-component/tlp-combobox/tlp-combobox.component';
 
 @NgModule({
-  declarations: [AppComponent, CreateDocumentComponent, MainComponent, DragableTableComponent, TlpTableComponent, TlpPaginatorComponent],
+  declarations: [AppComponent, CreateDocumentComponent, MainComponent, DragableTableComponent, TlpTableComponent, TlpPaginatorComponent, SearchDocumentComponent, TlpComboboxComponent],
   imports: [BrowserModule, RouterModule, AppRoutingModule, HttpClientModule, DragToSelectModule,FormsModule],
   providers: [],
   bootstrap: [AppComponent]

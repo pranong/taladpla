@@ -1,0 +1,90 @@
+<form>
+    <div class="grid gap-2 mb-2 md:grid-cols-1">
+        ใบสั่งซื้อ
+    </div>
+
+    <div class="grid gap-2 mb-5 md:grid-cols-2">
+        <div>
+            <label for="first_name" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">Site</label>
+            <input type="text" id="first_name"
+                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+                placeholder="John" required />
+        </div>
+        <div>
+            <label for="last_name" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">วันที่สั่งซื้อ</label>
+            <input type="text" id="last_name"
+                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+                placeholder="Doe" required />
+        </div>
+    </div>
+
+    <div class="grid gap-2 mb-5 md:grid-cols-2">
+        <div>
+            <label for="company" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">รายการ</label>
+            <tlp-combobox [optionsList]="ddlList['company']" [optionKey]="'company'" (comboResult)="comboResult($event)"></tlp-combobox>
+        </div>
+        <div>
+            <label for="phone" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">บริษัท / ร้าน</label>
+            <input type="tel" id="phone"
+                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+                placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
+        </div>
+        <div>
+            <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">จำนวน</label>
+            <input type="number" id="visitors"
+                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+                placeholder="" required />
+        </div>
+        <div>
+            <label for="website" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">ผู้ซื้อ</label>
+            <input type="url" id="website"
+                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+                placeholder="flowbite.com" required />
+        </div>
+    </div>
+
+    <div class="grid gap-2 mb-5 md:grid-cols-1">
+        ราคา
+    </div>
+
+    <div class="grid gap-2 mb-5 md:grid-cols-2">
+        <div>
+            <label for="first_name" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">ราคาต่อหน่วย</label>
+            <input type="text" id="first_name"
+                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+                placeholder="John" required />
+        </div>
+        <div>
+            <label for="last_name" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">ส่วนลด</label>
+            <input type="text" id="last_name"
+                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+                placeholder="Doe" required />
+        </div>
+        <div>
+            <label for="company" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">ยอดส่วนลด</label>
+            <input type="text" id="company"
+                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+                placeholder="Flowbite" required />
+        </div>
+        <div>
+            <label for="phone" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">ก่อน VAT</label>
+            <input type="tel" id="phone"
+                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+                placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
+        </div>
+        <div>
+            <label for="website" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">VAT 7%</label>
+            <input type="url" id="website"
+                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+                placeholder="flowbite.com" required />
+        </div>
+        <div>
+            <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">จำนวนเงิน</label>
+            <input type="number" id="visitors"
+                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+                placeholder="" required />
+        </div>
+    </div>
+    <button type="submit"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs w-full sm:w-auto px-5 py-2.5 text-center light:bg-blue-600 light:hover:bg-blue-700 light:focus:ring-blue-800">Submit</button>
+</form>
