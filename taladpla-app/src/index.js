@@ -23,9 +23,9 @@ app.use((req, res, next) => {
 });
 //app.use(cors());
 app.use(cors({
-  origin: 'http://139.59.219.248', // This must match your frontend URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true // optional, only if you send cookies/auth
+  origin: 'http://localhost:4200', // Angular's exposed port
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
 }));
 // ---------------------------- Schedule ----------------------------
 // const date = new Date(2012, 11, 21, 5, 30, 0);

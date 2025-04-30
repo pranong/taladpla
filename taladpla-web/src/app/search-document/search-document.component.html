@@ -1,90 +1,205 @@
-<form>
+<div>
     <div class="grid gap-2 mb-2 md:grid-cols-1">
         ใบสั่งซื้อ
     </div>
 
-    <div class="grid gap-2 mb-5 md:grid-cols-2">
+    <div class="grid gap-2 mb-10 md:grid-cols-2">
         <div>
             <label for="first_name" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">Site</label>
-            <input type="text" id="first_name"
-                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
-                placeholder="John" required />
+            <tlp-combobox [optionsList]="ddlList['site']" [optionKey]="'site'"
+                (comboResult)="comboResult($event)"></tlp-combobox>
         </div>
         <div>
             <label for="last_name" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">วันที่สั่งซื้อ</label>
             <input type="text" id="last_name"
                 class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
-                placeholder="Doe" required />
+                placeholder="Doe" [(ngModel)]="formValue.issueDate"/>
         </div>
     </div>
 
-    <div class="grid gap-2 mb-5 md:grid-cols-2">
+    <div class="grid gap-2 mb-3 md:grid-cols-2">
         <div>
-            <label for="company" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">รายการ</label>
-            <tlp-combobox [optionsList]="ddlList['company']" [optionKey]="'company'" (comboResult)="comboResult($event)"></tlp-combobox>
+            <label for="equipment" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">รายการ</label>
+            <tlp-combobox [optionsList]="ddlList['equipment']" [optionKey]="'equipment'"
+                (comboResult)="comboResult($event)"></tlp-combobox>
         </div>
-        <div>
-            <label for="phone" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">บริษัท / ร้าน</label>
-            <input type="tel" id="phone"
-                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
-                placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
-        </div>
-        <div>
-            <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">จำนวน</label>
-            <input type="number" id="visitors"
-                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
-                placeholder="" required />
-        </div>
-        <div>
-            <label for="website" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">ผู้ซื้อ</label>
-            <input type="url" id="website"
-                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
-                placeholder="flowbite.com" required />
+        <div class="grid gap-2 md:grid-cols-2">
+            <div>
+                <label for="phone" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">บริษัท /
+                    ร้าน</label>
+                <tlp-combobox [optionsList]="ddlList['vendor']" [optionKey]="'vendor'"
+                    (comboResult)="comboResult($event)"></tlp-combobox>
+            </div>
+            <div>
+                <label for="website" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">ผู้ซื้อ</label>
+                <tlp-combobox [optionsList]="ddlList['issueBy']" [optionKey]="'issueBy'"
+                    (comboResult)="comboResult($event)"></tlp-combobox>
+            </div>
         </div>
     </div>
 
-    <div class="grid gap-2 mb-5 md:grid-cols-1">
-        ราคา
+    <div class="grid gap-2 mb-3 md:grid-cols-2">
+        <div>
+            <div class="grid gap-2 mb-3 md:grid-cols-2">
+                <div>
+                    <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">Type</label>
+                    <div class="flex mt-2">
+                        <div class="flex items-center me-4">
+                            <input id="inline-radio" type="radio" value="N" name="inline-radio-group" [(ngModel)]="formValue.type"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="inline-radio"
+                                class="ms-2 text-xs font-medium text-gray-900 light:text-gray-300">ค่าวัสดุ-อุปกรณ์</label>
+                        </div>
+                        <div class="flex items-center me-4">
+                            <input id="inline-2-radio" type="radio" value="O" name="inline-radio-group" [(ngModel)]="formValue.type"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="inline-2-radio"
+                                class="ms-2 text-xs font-medium text-gray-900 light:text-gray-300">อื่นๆ</label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <!-- <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">VAT</label>
+                    <div class="flex mt-2">
+                        <div class="flex items-center me-4">
+                            <input id="inline-radio" type="radio" value="NV" name="inline-radio-group2"
+                                [(ngModel)]="formValue.isVat"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="inline-radio" class="ms-2 text-xs font-medium text-gray-900 light:text-gray-300">No
+                                VAT</label>
+                        </div>
+                        <div class="flex items-center me-4">
+                            <input id="inline-2-radio" type="radio" value="V" name="inline-radio-group2"
+                                [(ngModel)]="formValue.isVat"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="inline-2-radio" class="ms-2 text-xs font-medium text-gray-900 light:text-gray-300">VAT
+                                7%</label>
+                        </div>
+                    </div> -->
+                    <div class="block mb-4"></div>
+                    <label class="inline-flex items-center mb-5 cursor-pointer">
+                        <input type="checkbox" [(ngModel)]="formValue.isVat" class="sr-only peer">
+                        <div
+                            class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600">
+                        </div>
+                        <span class="ms-3 text-sm font-medium text-gray-900">VAT 7%</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="grid gap-2 mt-1 mb-6 md:grid-cols-1 ">
+                <hr>
+            </div>
+            
+            <div class="grid gap-2 mb-5 md:grid-cols-1">
+                <div class="grid gap-2 md:grid-cols-4">
+                    <div>
+                        <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">จำนวน</label>
+                        <input type="number" id="visitors"
+                            class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+                            placeholder="" required />
+                    </div>
+                    <div>
+                        <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">หน่วย</label>
+                        <tlp-combobox [optionsList]="ddlList['unit']" [optionKey]="'unit'"
+                            (comboResult)="comboResult($event)"></tlp-combobox>
+                    </div>
+                    <div>
+                        <label for="first_name"
+                            class="block mb-1 text-xs font-medium text-gray-900 light:text-white">ราคาต่อหน่วย</label>
+                        <input type="number" id="visitors"
+                            class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+                            placeholder="" [(ngModel)]="formValue.price" />
+                    </div>
+                    <div>
+                        <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">ส่วนลด</label>
+                        <input type="number" id="visitors"
+                            class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+                            placeholder="" [(ngModel)]="formValue.discount" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pl-4">
+            <div class="w-full p-5 bg-white border border-gray-200 rounded-lg shadow-sm light:bg-gray-800 light:border-gray-700">
+                <h5 class="mb-2">Summary</h5>
+                <div class="flow-root">
+                    <ul role="list" class="divide-y divide-gray-200 light:divide-gray-700">
+                        <li class="py-3 xs:py-4">
+                            <div class="flex items-center">
+                                <div class="flex-1 min-w-0 ms-4">
+                                    <p class="text-xs font-medium text-gray-900 truncate light:text-white">
+                                        {{formValue.equipmentName}}
+                                    </p>
+                                    <p class="text-xs text-gray-500 truncate light:text-gray-400">
+                                        ราคาต่อหน่วย
+                                    </p>
+                                </div>
+                                <div class="inline-flex items-center text-sm font-semibold text-gray-900 light:text-white">
+                                    ฿{{formValue.price}}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="py-3 xs:py-4">
+                            <div class="flex items-center">
+                                <div class="flex-1 min-w-0 ms-4">
+                                    <p class="text-xs font-medium text-gray-900 truncate light:text-white">
+                                        ส่วนลด
+                                    </p>
+                                    <p class="text-xs text-gray-500 truncate light:text-gray-400">
+                                        ยอดส่วนลด
+                                    </p>
+                                </div>
+                                <div class="flex-1 ms-4 items-center text-sm font-semibold text-gray-900 light:text-white">
+                                    <p class="text-xs text-right font-medium text-gray-900 truncate light:text-white">
+                                        ฿{{formValue.discount}}
+                                    </p>
+                                    <p class="text-xs text-right text-gray-500 truncate light:text-gray-400">
+                                        ฿{{formValue.price - formValue.discount}}
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="py-3 xs:py-4">
+                            <div class="flex items-center">
+                                <div class="flex-1 min-w-0 ms-4">
+                                    <p class="text-xs font-medium text-gray-900 truncate light:text-white">
+                                        Vat
+                                    </p>
+                                    <p class="text-xs text-gray-500 truncate light:text-gray-400">
+                                        7%
+                                    </p>
+                                </div>
+                                <div class="inline-flex items-center text-sm font-semibold text-gray-900 light:text-white">
+                                    ฿{{(7 * (formValue.price - formValue.discount))/100}}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="py-3 xs:py-4">
+                            <div class="flex items-center">
+                                <div class="flex-1 min-w-0 ms-4">
+                                    <p class="text-sm font-medium text-gray-900 truncate light:text-white">
+                                        Total
+                                    </p>
+                                </div>
+                                <div class="inline-flex items-center text-base font-semibold text-gray-900 light:text-white">
+                                    ฿{{((7 * (formValue.price - formValue.discount))/100) + formValue.price - formValue.discount}}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
     </div>
 
-    <div class="grid gap-2 mb-5 md:grid-cols-2">
-        <div>
-            <label for="first_name" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">ราคาต่อหน่วย</label>
-            <input type="text" id="first_name"
-                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
-                placeholder="John" required />
-        </div>
-        <div>
-            <label for="last_name" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">ส่วนลด</label>
-            <input type="text" id="last_name"
-                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
-                placeholder="Doe" required />
-        </div>
-        <div>
-            <label for="company" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">ยอดส่วนลด</label>
-            <input type="text" id="company"
-                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
-                placeholder="Flowbite" required />
-        </div>
-        <div>
-            <label for="phone" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">ก่อน VAT</label>
-            <input type="tel" id="phone"
-                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
-                placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
-        </div>
-        <div>
-            <label for="website" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">VAT 7%</label>
-            <input type="url" id="website"
-                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
-                placeholder="flowbite.com" required />
-        </div>
-        <div>
-            <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">จำนวนเงิน</label>
-            <input type="number" id="visitors"
-                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
-                placeholder="" required />
-        </div>
+    <hr class="mt-5 mb-5">
+
+    <div class="float-right">
+        <button class="" type="submit"
+            class="text-white mr-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs w-full sm:w-auto px-5 py-2.5 text-center light:bg-blue-600 light:hover:bg-blue-700 light:focus:ring-blue-800">Reset</button>
+        <button class="" type="submit"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs w-full sm:w-auto px-5 py-2.5 text-center light:bg-blue-600 light:hover:bg-blue-700 light:focus:ring-blue-800">Submit</button>
     </div>
-    <button type="submit"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs w-full sm:w-auto px-5 py-2.5 text-center light:bg-blue-600 light:hover:bg-blue-700 light:focus:ring-blue-800">Submit</button>
-</form>
+</div>

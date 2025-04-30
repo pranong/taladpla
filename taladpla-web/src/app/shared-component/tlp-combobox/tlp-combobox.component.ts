@@ -31,32 +31,49 @@ export class TlpComboboxComponent implements OnInit {
     onDocumentClick(event: MouseEvent): void {
     const clickedInside = this.myDiv?.nativeElement.contains(event.target);
     const clickedBtn = this.myDiv2?.nativeElement.contains(event.target);
-    console.log('clickedInside', clickedInside)
-    console.log('clickedBtn', clickedBtn)
       if (!clickedInside && !clickedBtn) {
         this.toggleStatus = false
-        this.textBoxData = ''
+        // this.textBoxData = ''
       }
     }
 
   onSelectDropdown(option: any) {
-    this.comboResult.emit({key: this.optionKey, value: option.value });
-    this.toggleStatus = false
-  }
-
-  onClickDropdown() {
-    console.log('this.toggleStatus', this.toggleStatus, this.options)
-    this.toggleStatus = !this.toggleStatus
-    console.log('textBoxData', this.textBoxData)
-    this.textBoxData = ''
-    console.log('textBoxData2', this.textBoxData)
-  }
-
-  onChangeTextBox() {
-    console.log('onChangeTextBox', this.textBoxData)
-    
+    this.comboResult.emit({ key: this.optionKey, data: option });
+    this.textBoxData = option.name
     this.options = this.originalOptions.filter(option =>
       option.name.toLowerCase().includes(this.textBoxData.toLowerCase())
     );
+    setTimeout(() => {
+      this.toggleStatus = false
+    }, 100);
+  }
+
+  onClickDropdown(type: string) {
+    if (type == 'focus') {
+      this.toggleStatus = true
+    } else if (type == 'blur') {
+      if (this.textBoxData !== '') {
+        let findValue = this.originalOptions.find(x => x.name == this.textBoxData.trim())
+        let option = {
+          name: this.textBoxData,
+          value: findValue ? findValue.value : ''
+        }
+        this.comboResult.emit({ key: this.optionKey, data: option });
+      }
+      setTimeout(() => {
+        this.toggleStatus = false
+      }, 100);
+    }
+  }
+
+  onChangeTextBox() {
+    this.options = this.originalOptions.filter(option =>
+      option.name.toLowerCase().includes(this.textBoxData.toLowerCase())
+    );
+    if (this.options.length == 0) {
+      this.toggleStatus = false
+    } else if (this.options.length == 0 && !this.toggleStatus) {
+      this.toggleStatus = true
+    }
   }
 }
