@@ -22,4 +22,8 @@ export class SearchDocService {
   onSearchByCriteria(req: { name: string; }): Observable<any> {
     return this.http.post(`${this.baseUrl}/onSearchByCriteria`, req);
   }
+
+  getMasterData(req: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/getMasterData`, req);
+  }
 }

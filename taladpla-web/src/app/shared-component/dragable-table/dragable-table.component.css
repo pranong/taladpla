@@ -6,12 +6,12 @@
 }
 
 .selectable-item-selected {
-    background-color: rgb(74 83 98 / var(--tw-bg-opacity, 1));
+    background-color: rgb(74 83 98 / var(--tw-bg-opacity, 1)) !important;
     color: #fff;
 }
 
 .selectable-item-selected:hover {
-    background-color: rgb(55 62 74 / var(--tw-bg-opacity, 1));
+    background-color: rgb(55 62 74 / var(--tw-bg-opacity, 1)) !important;
     color: #fff;
 }
 

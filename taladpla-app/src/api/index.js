@@ -37,13 +37,32 @@ router.post('/onSearchByCriteria', async (req, res) => {
   }
 });
   
-router.get('/db-status', async (req, res) => {
+router.post('/getMasterData', async (req, res) => {
     try {
-      let rows = await knex('settings')
+      let response = await knex.raw('select * from get_master_data(?)', ['all'])
+      console.log('row', response.sortedRows);
+      let sortedRows = {}
+      for (let i = 0; i < response.rows.length; i++) {
+        const element = response.rows[i];
+        if (sortedRows[element.key] && sortedRows[element.key].length > 0) {
+          sortedRows[element.key].push({
+            name: element.name,
+            value: element.value
+          })
+        } else {
+          sortedRows[element.key] = [
+            {
+              name: element.name,
+              value: element.value,
+            },
+          ];
+        }
+      }
+      console.log('sortedRows', sortedRows);
       res.send({
         status: true,
-        message: rows,
-      })
+        data: sortedRows,
+      });
     } catch (err) {
         console.error(err)
         res.send({

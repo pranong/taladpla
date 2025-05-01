@@ -3,13 +3,13 @@
         ใบสั่งซื้อ
     </div>
 
-    <div class="grid gap-2 mb-10 md:grid-cols-2">
-        <div>
+    <div class="grid gap-2 mb-10 md:grid-cols-2"> <!--  [SITE] | [ISSUE DATE] -->
+        <div> <!--  SITE -->
             <label for="first_name" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">Site</label>
             <tlp-combobox [optionsList]="ddlList['site']" [optionKey]="'site'"
                 (comboResult)="comboResult($event)"></tlp-combobox>
         </div>
-        <div>
+        <div> <!--  ISSUE DATE -->
             <label for="last_name" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">วันที่สั่งซื้อ</label>
             <input type="text" id="last_name"
                 class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
@@ -17,16 +17,15 @@
         </div>
     </div>
 
-    <div class="grid gap-2 mb-3 md:grid-cols-2">
-        <div>
+    <div class="grid gap-2 mb-3 md:grid-cols-2"> <!--  [EQUIPMENT] | [VENDOR | ISSUER] -->
+        <div> <!--  EQUIPMENT -->
             <label for="equipment" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">รายการ</label>
             <tlp-combobox [optionsList]="ddlList['equipment']" [optionKey]="'equipment'"
                 (comboResult)="comboResult($event)"></tlp-combobox>
         </div>
-        <div class="grid gap-2 md:grid-cols-2">
+        <div class="grid gap-2 md:grid-cols-2"> <!--  VENDOR | ISSUER -->
             <div>
-                <label for="phone" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">บริษัท /
-                    ร้าน</label>
+                <label for="phone" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">บริษัท / ร้าน</label>
                 <tlp-combobox [optionsList]="ddlList['vendor']" [optionKey]="'vendor'"
                     (comboResult)="comboResult($event)"></tlp-combobox>
             </div>
@@ -40,8 +39,8 @@
 
     <div class="grid gap-2 mb-3 md:grid-cols-2">
         <div>
-            <div class="grid gap-2 mb-3 md:grid-cols-2">
-                <div>
+            <div class="grid gap-2 md:grid-cols-2"> <!--  [TYPE | VAT] -->
+                <div> <!--  [TYPE] -->
                     <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">Type</label>
                     <div class="flex mt-2">
                         <div class="flex items-center me-4">
@@ -58,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-                <div>
+                <div><!--  [VAT] -->
                     <!-- <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">VAT</label>
                     <div class="flex mt-2">
                         <div class="flex items-center me-4">
@@ -87,31 +86,31 @@
                 </div>
             </div>
             
-            <div class="grid gap-2 mt-1 mb-6 md:grid-cols-1 ">
+            <div class="grid gap-2 mb-6 md:grid-cols-1 ">
                 <hr>
             </div>
             
-            <div class="grid gap-2 mb-5 md:grid-cols-1">
+            <div class="grid gap-2 mb-5 md:grid-cols-1"><!--  [QTY] | [UNIT] | [PRICE] | [DISCOUNT] -->
                 <div class="grid gap-2 md:grid-cols-4">
-                    <div>
+                    <div> <!--  [QTY] -->
                         <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">จำนวน</label>
                         <input type="number" id="visitors"
                             class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
-                            placeholder="" required />
+                            placeholder="" [(ngModel)]="formValue.qty" />
                     </div>
-                    <div>
+                    <div> <!--  [UNIT] -->
                         <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">หน่วย</label>
                         <tlp-combobox [optionsList]="ddlList['unit']" [optionKey]="'unit'"
                             (comboResult)="comboResult($event)"></tlp-combobox>
                     </div>
-                    <div>
+                    <div> <!--  [PRICE] -->
                         <label for="first_name"
                             class="block mb-1 text-xs font-medium text-gray-900 light:text-white">ราคาต่อหน่วย</label>
                         <input type="number" id="visitors"
                             class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
                             placeholder="" [(ngModel)]="formValue.price" />
                     </div>
-                    <div>
+                    <div> <!--  [DISCOUNT] -->
                         <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">ส่วนลด</label>
                         <input type="number" id="visitors"
                             class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
@@ -120,27 +119,27 @@
                 </div>
             </div>
         </div>
-        <div class="pl-4">
+        <div class="pl-4"> <!-- [SUMMARY] -->
             <div class="w-full p-5 bg-white border border-gray-200 rounded-lg shadow-sm light:bg-gray-800 light:border-gray-700">
-                <h5 class="mb-2">Summary</h5>
+                <h5 class="mb-3 mt-1">Summary</h5>
                 <div class="flow-root">
                     <ul role="list" class="divide-y divide-gray-200 light:divide-gray-700">
-                        <li class="py-3 xs:py-4">
+                        <li class="py-3 xs:py-4" *ngIf="formValue.equipmentName && formValue.price && formValue.qty">
                             <div class="flex items-center">
                                 <div class="flex-1 min-w-0 ms-4">
                                     <p class="text-xs font-medium text-gray-900 truncate light:text-white">
                                         {{formValue.equipmentName}}
                                     </p>
                                     <p class="text-xs text-gray-500 truncate light:text-gray-400">
-                                        ราคาต่อหน่วย
+                                        ราคาต่อหน่วย ({{formValue.price}}) x {{formValue.qty}}
                                     </p>
                                 </div>
                                 <div class="inline-flex items-center text-sm font-semibold text-gray-900 light:text-white">
-                                    ฿{{formValue.price}}
+                                    ฿{{formValue.price * formValue.qty}}
                                 </div>
                             </div>
                         </li>
-                        <li class="py-3 xs:py-4">
+                        <li class="py-3 xs:py-4" *ngIf="formValue.discount && formValue.equipmentName && formValue.price && formValue.qty">
                             <div class="flex items-center">
                                 <div class="flex-1 min-w-0 ms-4">
                                     <p class="text-xs font-medium text-gray-900 truncate light:text-white">
@@ -155,12 +154,12 @@
                                         ฿{{formValue.discount}}
                                     </p>
                                     <p class="text-xs text-right text-gray-500 truncate light:text-gray-400">
-                                        ฿{{formValue.price - formValue.discount}}
+                                        ฿{{(formValue.price * formValue.qty) - formValue.discount}}
                                     </p>
                                 </div>
                             </div>
                         </li>
-                        <li class="py-3 xs:py-4">
+                        <li class="py-3 xs:py-4" *ngIf="formValue.isVat">
                             <div class="flex items-center">
                                 <div class="flex-1 min-w-0 ms-4">
                                     <p class="text-xs font-medium text-gray-900 truncate light:text-white">
@@ -171,7 +170,7 @@
                                     </p>
                                 </div>
                                 <div class="inline-flex items-center text-sm font-semibold text-gray-900 light:text-white">
-                                    ฿{{(7 * (formValue.price - formValue.discount))/100}}
+                                    ฿{{(7 * ((formValue.price * formValue.qty) - formValue.discount))/100}}
                                 </div>
                             </div>
                         </li>
@@ -183,7 +182,7 @@
                                     </p>
                                 </div>
                                 <div class="inline-flex items-center text-base font-semibold text-gray-900 light:text-white">
-                                    ฿{{((7 * (formValue.price - formValue.discount))/100) + formValue.price - formValue.discount}}
+                                    ฿{{((7 * ((formValue.price * formValue.qty)- formValue.discount))/100) + (formValue.price * formValue.qty) - formValue.discount}}
                                 </div>
                             </div>
                         </li>
@@ -196,10 +195,22 @@
 
     <hr class="mt-5 mb-5">
 
-    <div class="float-right">
+    <div class="grid gap-2 mb-3 md:grid-cols-1">
         <button class="" type="submit"
-            class="text-white mr-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs w-full sm:w-auto px-5 py-2.5 text-center light:bg-blue-600 light:hover:bg-blue-700 light:focus:ring-blue-800">Reset</button>
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs w-10 sm:w-auto px-5 py-2.5 text-center light:bg-blue-600 light:hover:bg-blue-700 light:focus:ring-blue-800">Reset</button>
+        <button class="" type="submit" (click)="doSubmit()"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs w-10 sm:w-auto px-5 py-2.5 text-center light:bg-blue-600 light:hover:bg-blue-700 light:focus:ring-blue-800">Add</button>
+    </div>
+</div>
+
+<div #tableSection *ngIf="this.rowList.length > 0">
+    <div class="grid gap-2 mb-3 md:grid-cols-1">
+        <tlp-table *ngIf="this.rowList.length > 0" [dataRow]="rowList" [tableConfig]="tableConfig"></tlp-table>
+    </div>
+    <div class="grid gap-2 mb-3 md:grid-cols-1">
         <button class="" type="submit"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs w-full sm:w-auto px-5 py-2.5 text-center light:bg-blue-600 light:hover:bg-blue-700 light:focus:ring-blue-800">Reset</button>
+        <button class="" type="submit" (click)="doSubmit()"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs w-full sm:w-auto px-5 py-2.5 text-center light:bg-blue-600 light:hover:bg-blue-700 light:focus:ring-blue-800">Submit</button>
     </div>
 </div>

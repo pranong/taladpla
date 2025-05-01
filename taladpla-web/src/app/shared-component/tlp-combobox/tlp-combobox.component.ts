@@ -67,12 +67,13 @@ export class TlpComboboxComponent implements OnInit {
   }
 
   onChangeTextBox() {
+    console.log('onChangeTextBox', this.textBoxData)
     this.options = this.originalOptions.filter(option =>
       option.name.toLowerCase().includes(this.textBoxData.toLowerCase())
     );
     if (this.options.length == 0) {
       this.toggleStatus = false
-    } else if (this.options.length == 0 && !this.toggleStatus) {
+    } else if (this.options.length >= 0 && !this.toggleStatus) {
       this.toggleStatus = true
     }
   }

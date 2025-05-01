@@ -1,7 +1,7 @@
 <div #dragArea (mouseleave)="onMouseUpOnItem(-1)" class="drag-container relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="table-auto w-full border-collapse w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-800 uppercase bg-gray-50 dark:bg-gray-300 dark:text-gray-800">
-            <th *ngFor="let conf of tableConfig; let cidx = index" scope="col" class="px-2 py-1 text-xs">
+            <th *ngFor="let conf of tableConfig; let cidx = index" scope="col" class="px-2 py-1 text-xs whitespace-nowrap" [ngClass]="conf.style">
                 <div *ngIf="conf.sortable && !searchVisible[conf.valueKey]" class="flex items-center" >
                     <span class="material-icons text-gray-900 hover:text-gray-1000 text-base pr-2 cursor-pointer float-right"
                         (click)="toggleSearch(conf)">
@@ -17,7 +17,7 @@
                 <div *ngIf="conf.searchable && searchVisible[conf.valueKey]">
                     <div class="relative w-full">
                         <input type="text" id="voice-search" [(ngModel)]="searchText[conf.valueKey]" 
-                            class="bg-white-50 border border-gray-300 text-gray-900 text-xs rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full ps-5 p-1"
+                            class="bg-white-50 border border-gray-300 text-gray-900 text-xs rounded-md focus:ring-blue-500 focus:border-blue-500 block min-w-20 w-full ps-5 p-1"
                             placeholder="Search..." (input)="applyFilter()" />
                         <button type="button" class="absolute inset-y-0 end-0 flex items-center pe-3" (click)="clearSearch(conf.valueKey)">
                             <span class="material-icons text-gray-700 hover:text-gray-900 text-base pl-2 cursor-pointer">
@@ -33,7 +33,7 @@
             <tr *ngFor="let item of items; let i = index" class="border-t selectable-item text-xs bg-white border-b dark:text-gray-700 dark:bg-gray-100 dark:border-gray-1000 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-200"
                 [ngClass]="item?.isSelected ? 'selectable-item-selected':''" (mouseup)="onMouseUpOnItem(i)"
                 (mousedown)="onMouseDownOnItem(i)" (mouseenter)="onMouseEnterOnItem(i)">
-                <td *ngFor="let confValue of tableConfig" class="px-2 py-1 text-xs">
+                <td *ngFor="let confValue of tableConfig" class="px-2 py-1 text-xs whitespace-nowrap" [ngClass]="confValue.style ? (item?.isSelected ? confValue.style + ' bg-gray-600' : confValue.style + ' bg-white') : ''">
                     {{item[confValue.valueKey]}}
                 </td>
             </tr>
