@@ -12,6 +12,11 @@ const config = require('./config');
 const schedule = require('node-schedule');
 const moment = require('dayjs');
 const knex = require('./lib/knex')('mysql', config[config.db]);
+const dotenv = require('dotenv');
+
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV || 'development'}`
+});
 
 app.use(express.json());
 app.use((req, res, next) => {
@@ -23,7 +28,6 @@ app.use((req, res, next) => {
 });
 //app.use(cors());
 app.use(cors({
-  // origin: 'http://localhost:4200', // Angular's exposed port
   origin: process.env.CORS_IP || 'http://localhost:4200',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
@@ -81,7 +85,7 @@ app.use(cors({
 // ---------------------------- APIs SERVICE ----------------------------
 const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {
-  console.log(`running at http://localhost:${PORT}`);
+  console.log(`running at http://localhost:${PORT} (${process.env.NODE_ENV}) (${process.env.CORS_IP})`);
 });
 app.use(
   '/api',
