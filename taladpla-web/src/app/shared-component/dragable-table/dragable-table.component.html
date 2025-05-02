@@ -1,16 +1,16 @@
 <div #dragArea (mouseleave)="onMouseUpOnItem(-1)" class="drag-container relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="table-auto w-full border-collapse w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-800 uppercase bg-gray-50 dark:bg-gray-300 dark:text-gray-800">
-            <th *ngFor="let conf of tableConfig; let cidx = index" scope="col" class="px-2 py-1 text-xs whitespace-nowrap" [ngClass]="conf.style">
+    <table class="table-auto w-full border-collapse w-full text-sm text-left rtl:text-right text-gray-500 dark:text-white">
+        <thead class="text-xs text-gray-800 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-800">
+            <th *ngFor="let conf of tableConfig; let cidx = index" scope="col" class="px-2 py-1 text-xs text-gray-800 dark:text-white whitespace-nowrap" [ngClass]="conf.style + ' text-xs text-gray-800 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-800'">
                 <div *ngIf="conf.sortable && !searchVisible[conf.valueKey]" class="flex items-center" >
-                    <span class="material-icons text-gray-900 hover:text-gray-1000 text-base pr-2 cursor-pointer float-right"
+                    <span class="material-icons text-gray-900 dark:text-gray-300 hover:text-gray-1000 text-base pr-2 cursor-pointer float-right"
                         (click)="toggleSearch(conf)">
                         search
                     </span>
 
                     <div class="text-xs">{{conf.columnName}}</div>
 
-                    <span class="material-icons text-gray-900 hover:text-gray-1000 text-base pl-2 cursor-pointer" (click)="toggleSort(conf)">
+                    <span class="material-icons text-gray-900 dark:text-gray-300 hover:text-gray-1000 text-base pl-2 cursor-pointer" (click)="toggleSort(conf)">
                         unfold_more
                     </span>
                 </div>
@@ -30,17 +30,18 @@
             </th>
         </thead> 
         <tbody>
-            <tr *ngFor="let item of items; let i = index" class="border-t selectable-item text-xs bg-white border-b dark:text-gray-700 dark:bg-gray-100 dark:border-gray-1000 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-200"
+            <tr *ngFor="let item of items; let i = index" class="group border-t selectable-item text-xs bg-white border-b dark:text-gray-700 dark:text-white dark:bg-gray-500 dark:border-gray-200 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
                 [ngClass]="item?.isSelected ? 'selectable-item-selected':''" (mouseup)="onMouseUpOnItem(i)"
                 (mousedown)="onMouseDownOnItem(i)" (mouseenter)="onMouseEnterOnItem(i)">
-                <td *ngFor="let confValue of tableConfig" class="px-2 py-1 text-xs whitespace-nowrap" [ngClass]="confValue.style ? (item?.isSelected ? confValue.style + ' bg-gray-600' : confValue.style + ' bg-white') : ''">
+                <td *ngFor="let confValue of tableConfig" class="px-2 py-1 text-xs whitespace-nowrap" [ngClass]="confValue.style">
                     {{item[confValue.valueKey]}}
                 </td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
-                <td class="h-3"></td>
+                <td *ngFor="let confValue of tableConfig" class="h-3 text-xs text-gray-800 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-800">
+                </td>
             </tr>
         </tfoot>
     </table>
