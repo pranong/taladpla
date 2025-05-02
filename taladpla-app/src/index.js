@@ -23,7 +23,8 @@ app.use((req, res, next) => {
 });
 //app.use(cors());
 app.use(cors({
-  origin: 'http://localhost:4200', // Angular's exposed port
+  // origin: 'http://localhost:4200', // Angular's exposed port
+  origin: process.env.CORS_IP || 'http://localhost:4200',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
