@@ -16,7 +16,7 @@ export class SearchDocService {
     return this.http.get(`${this.baseUrl}/version`);
   }
   getDB(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/users`);
+    return this.http.get(`${this.baseUrl}/dbStatus`);
   }
 
   onSearchByCriteria(req: { name: string; }): Observable<any> {

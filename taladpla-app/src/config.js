@@ -1,6 +1,6 @@
 const path = require('path')
 const util = require('./lib/util')
-require('dotenv').config();
+require('dotenv').config({path: `.env.${process.env.NODE_ENV || 'development'}`});
 
 if (process.env.TELECAR && !process.env.TELECAR_CODE) {
   console.log('ERROR, Environment variable TELECAR_CODE is missing')
@@ -8,7 +8,7 @@ if (process.env.TELECAR && !process.env.TELECAR_CODE) {
 }
 
 module.exports = {
-
+  
   db: process.env.CLARET_DB || 'mysql',
 
   mysql: {

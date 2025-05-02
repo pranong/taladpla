@@ -85,7 +85,7 @@ app.use(cors({
 // ---------------------------- APIs SERVICE ----------------------------
 const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {
-  console.log(`running at http://localhost:${PORT} (${process.env.NODE_ENV}) (${process.env.CORS_IP})`);
+  console.log(`running at http://localhost:${PORT} (${process.env.NODE_ENV}) (for ${process.env.CORS_IP})`);
 });
 app.use(
   '/api',

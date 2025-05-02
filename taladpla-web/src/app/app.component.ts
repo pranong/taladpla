@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
     this.api.getDB().subscribe(data => {
       console.log('data.result', data)
-      this.messageDb = data.message
+      this.messageDb = data.status ? 'READY!' : 'FAILED!'
     });
   }
 

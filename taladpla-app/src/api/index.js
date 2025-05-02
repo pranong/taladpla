@@ -17,8 +17,23 @@ router.get('/', (req, res) => {
 router.get('/version', (req, res) => {
     res.send({
       status: true,
-      message: 'welcome to app'
+      message: 'READY!'
     })
+})
+
+router.get('/dbStatus',async (req, res) => {
+  try {
+    let data = await knex('settings');
+    res.send({
+      status: true,
+      data,
+    });
+  } catch (error) {
+    res.send({
+      status: false,
+      message: error,
+    });
+  }
 })
 
 router.post('/onSearchByCriteria', async (req, res) => {
