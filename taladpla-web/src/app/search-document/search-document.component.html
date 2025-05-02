@@ -1,36 +1,36 @@
 <div>
-    <div class="grid gap-2 mb-2 md:grid-cols-1">
+    <div class="grid gap-2 mb-2 md:grid-cols-1 block mb-1 text-lg font-large text-gray-900 dark:text-white">
         ใบสั่งซื้อ
     </div>
 
     <div class="grid gap-2 mb-10 md:grid-cols-2"> <!--  [SITE] | [ISSUE DATE] -->
         <div> <!--  SITE -->
-            <label for="first_name" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">Site</label>
+            <label for="first_name" class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Site</label>
             <tlp-combobox [optionsList]="ddlList['site']" [optionKey]="'site'"
                 (comboResult)="comboResult($event)"></tlp-combobox>
         </div>
         <div> <!--  ISSUE DATE -->
-            <label for="last_name" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">วันที่สั่งซื้อ</label>
+            <label for="last_name" class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">วันที่สั่งซื้อ</label>
             <input type="text" id="last_name"
-                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+                class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Doe" [(ngModel)]="formValue.issueDate"/>
         </div>
     </div>
 
     <div class="grid gap-2 mb-3 md:grid-cols-2"> <!--  [EQUIPMENT] | [VENDOR | ISSUER] -->
         <div> <!--  EQUIPMENT -->
-            <label for="equipment" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">รายการ</label>
+            <label for="equipment" class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">รายการ</label>
             <tlp-combobox [optionsList]="ddlList['equipment']" [optionKey]="'equipment'"
                 (comboResult)="comboResult($event)"></tlp-combobox>
         </div>
         <div class="grid gap-2 md:grid-cols-2"> <!--  VENDOR | ISSUER -->
             <div>
-                <label for="phone" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">บริษัท / ร้าน</label>
+                <label for="phone" class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">บริษัท / ร้าน</label>
                 <tlp-combobox [optionsList]="ddlList['vendor']" [optionKey]="'vendor'"
                     (comboResult)="comboResult($event)"></tlp-combobox>
             </div>
             <div>
-                <label for="website" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">ผู้ซื้อ</label>
+                <label for="website" class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">ผู้ซื้อ</label>
                 <tlp-combobox [optionsList]="ddlList['issueBy']" [optionKey]="'issueBy'"
                     (comboResult)="comboResult($event)"></tlp-combobox>
             </div>
@@ -41,37 +41,37 @@
         <div>
             <div class="grid gap-2 md:grid-cols-2"> <!--  [TYPE | VAT] -->
                 <div> <!--  [TYPE] -->
-                    <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">Type</label>
+                    <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">Type</label>
                     <div class="flex mt-2">
                         <div class="flex items-center me-4">
                             <input id="inline-radio" type="radio" value="N" name="inline-radio-group" [(ngModel)]="formValue.type"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <label for="inline-radio"
-                                class="ms-2 text-xs font-medium text-gray-900 light:text-gray-300">ค่าวัสดุ-อุปกรณ์</label>
+                                class="ms-2 text-xs font-medium text-gray-900 dark:text-gray-300">ค่าวัสดุ-อุปกรณ์</label>
                         </div>
                         <div class="flex items-center me-4">
                             <input id="inline-2-radio" type="radio" value="O" name="inline-radio-group" [(ngModel)]="formValue.type"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <label for="inline-2-radio"
-                                class="ms-2 text-xs font-medium text-gray-900 light:text-gray-300">อื่นๆ</label>
+                                class="ms-2 text-xs font-medium text-gray-900 dark:text-gray-300">อื่นๆ</label>
                         </div>
                     </div>
                 </div>
                 <div><!--  [VAT] -->
-                    <!-- <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">VAT</label>
+                    <!-- <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">VAT</label>
                     <div class="flex mt-2">
                         <div class="flex items-center me-4">
                             <input id="inline-radio" type="radio" value="NV" name="inline-radio-group2"
                                 [(ngModel)]="formValue.isVat"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="inline-radio" class="ms-2 text-xs font-medium text-gray-900 light:text-gray-300">No
+                            <label for="inline-radio" class="ms-2 text-xs font-medium text-gray-900 dark:text-gray-300">No
                                 VAT</label>
                         </div>
                         <div class="flex items-center me-4">
                             <input id="inline-2-radio" type="radio" value="V" name="inline-radio-group2"
                                 [(ngModel)]="formValue.isVat"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="inline-2-radio" class="ms-2 text-xs font-medium text-gray-900 light:text-gray-300">VAT
+                            <label for="inline-2-radio" class="ms-2 text-xs font-medium text-gray-900 dark:text-gray-300">VAT
                                 7%</label>
                         </div>
                     </div> -->
@@ -81,7 +81,7 @@
                         <div
                             class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600">
                         </div>
-                        <span class="ms-3 text-sm font-medium text-gray-900">VAT 7%</span>
+                        <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">VAT 7%</span>
                     </label>
                 </div>
             </div>
@@ -93,48 +93,48 @@
             <div class="grid gap-2 mb-5 md:grid-cols-1"><!--  [QTY] | [UNIT] | [PRICE] | [DISCOUNT] -->
                 <div class="grid gap-2 md:grid-cols-4">
                     <div> <!--  [QTY] -->
-                        <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">จำนวน</label>
+                        <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">จำนวน</label>
                         <input type="number" id="visitors"
-                            class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+                            class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="" [(ngModel)]="formValue.qty" />
                     </div>
                     <div> <!--  [UNIT] -->
-                        <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">หน่วย</label>
+                        <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">หน่วย</label>
                         <tlp-combobox [optionsList]="ddlList['unit']" [optionKey]="'unit'"
                             (comboResult)="comboResult($event)"></tlp-combobox>
                     </div>
                     <div> <!--  [PRICE] -->
                         <label for="first_name"
-                            class="block mb-1 text-xs font-medium text-gray-900 light:text-white">ราคาต่อหน่วย</label>
+                            class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">ราคาต่อหน่วย</label>
                         <input type="number" id="visitors"
-                            class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+                            class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="" [(ngModel)]="formValue.price" />
                     </div>
                     <div> <!--  [DISCOUNT] -->
-                        <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 light:text-white">ส่วนลด</label>
+                        <label for="visitors" class="block mb-1 text-xs font-medium text-gray-900 dark:text-white">ส่วนลด</label>
                         <input type="number" id="visitors"
-                            class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+                            class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="" [(ngModel)]="formValue.discount" />
                     </div>
                 </div>
             </div>
         </div>
         <div class="pl-4"> <!-- [SUMMARY] -->
-            <div class="w-full p-5 bg-white border border-gray-200 rounded-lg shadow-sm light:bg-gray-800 light:border-gray-700">
-                <h5 class="mb-3 mt-1">Summary</h5>
+            <div class="w-full p-5 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                <h5 class="mb-3 mt-1 text-lg font-large text-gray-900 truncate dark:text-white">Summary</h5>
                 <div class="flow-root">
-                    <ul role="list" class="divide-y divide-gray-200 light:divide-gray-700">
+                    <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
                         <li class="py-3 xs:py-4" *ngIf="formValue.equipmentName && formValue.price && formValue.qty">
                             <div class="flex items-center">
                                 <div class="flex-1 min-w-0 ms-4">
-                                    <p class="text-xs font-medium text-gray-900 truncate light:text-white">
+                                    <p class="text-xs font-medium text-gray-900 truncate dark:text-white">
                                         {{formValue.equipmentName}}
                                     </p>
-                                    <p class="text-xs text-gray-500 truncate light:text-gray-400">
+                                    <p class="text-xs text-gray-500 truncate dark:text-gray-400">
                                         ราคาต่อหน่วย ({{formValue.price}}) x {{formValue.qty}}
                                     </p>
                                 </div>
-                                <div class="inline-flex items-center text-sm font-semibold text-gray-900 light:text-white">
+                                <div class="inline-flex items-center text-sm font-semibold text-gray-900 dark:text-white">
                                     ฿{{formValue.price * formValue.qty}}
                                 </div>
                             </div>
@@ -142,18 +142,18 @@
                         <li class="py-3 xs:py-4" *ngIf="formValue.discount && formValue.equipmentName && formValue.price && formValue.qty">
                             <div class="flex items-center">
                                 <div class="flex-1 min-w-0 ms-4">
-                                    <p class="text-xs font-medium text-gray-900 truncate light:text-white">
+                                    <p class="text-xs font-medium text-gray-900 truncate dark:text-white">
                                         ส่วนลด
                                     </p>
-                                    <p class="text-xs text-gray-500 truncate light:text-gray-400">
+                                    <p class="text-xs text-gray-500 truncate dark:text-gray-400">
                                         ยอดส่วนลด
                                     </p>
                                 </div>
-                                <div class="flex-1 ms-4 items-center text-sm font-semibold text-gray-900 light:text-white">
-                                    <p class="text-xs text-right font-medium text-gray-900 truncate light:text-white">
+                                <div class="flex-1 ms-4 items-center text-sm font-semibold text-gray-900 dark:text-white">
+                                    <p class="text-xs text-right font-medium text-gray-900 truncate dark:text-white">
                                         ฿{{formValue.discount}}
                                     </p>
-                                    <p class="text-xs text-right text-gray-500 truncate light:text-gray-400">
+                                    <p class="text-xs text-right text-gray-500 truncate dark:text-gray-400">
                                         ฿{{(formValue.price * formValue.qty) - formValue.discount}}
                                     </p>
                                 </div>
@@ -162,14 +162,14 @@
                         <li class="py-3 xs:py-4" *ngIf="formValue.isVat">
                             <div class="flex items-center">
                                 <div class="flex-1 min-w-0 ms-4">
-                                    <p class="text-xs font-medium text-gray-900 truncate light:text-white">
+                                    <p class="text-xs font-medium text-gray-900 truncate dark:text-white">
                                         Vat
                                     </p>
-                                    <p class="text-xs text-gray-500 truncate light:text-gray-400">
+                                    <p class="text-xs text-gray-500 truncate dark:text-gray-400">
                                         7%
                                     </p>
                                 </div>
-                                <div class="inline-flex items-center text-sm font-semibold text-gray-900 light:text-white">
+                                <div class="inline-flex items-center text-sm font-semibold text-gray-900 dark:text-white">
                                     ฿{{(7 * ((formValue.price * formValue.qty) - formValue.discount))/100}}
                                 </div>
                             </div>
@@ -177,11 +177,11 @@
                         <li class="py-3 xs:py-4">
                             <div class="flex items-center">
                                 <div class="flex-1 min-w-0 ms-4">
-                                    <p class="text-sm font-medium text-gray-900 truncate light:text-white">
+                                    <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
                                         Total
                                     </p>
                                 </div>
-                                <div class="inline-flex items-center text-base font-semibold text-gray-900 light:text-white">
+                                <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
                                     ฿{{((7 * ((formValue.price * formValue.qty)- formValue.discount))/100) + (formValue.price * formValue.qty) - formValue.discount}}
                                 </div>
                             </div>
@@ -197,9 +197,9 @@
 
     <div class="grid gap-2 mb-3 md:grid-cols-1">
         <button class="" type="submit"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs w-10 sm:w-auto px-5 py-2.5 text-center light:bg-blue-600 light:hover:bg-blue-700 light:focus:ring-blue-800">Reset</button>
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs w-10 sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Reset</button>
         <button class="" type="submit" (click)="doSubmit()"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs w-10 sm:w-auto px-5 py-2.5 text-center light:bg-blue-600 light:hover:bg-blue-700 light:focus:ring-blue-800">Add</button>
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs w-10 sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add</button>
     </div>
 </div>
 
@@ -209,8 +209,8 @@
     </div>
     <div class="grid gap-2 mb-3 md:grid-cols-1">
         <button class="" type="submit"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs w-full sm:w-auto px-5 py-2.5 text-center light:bg-blue-600 light:hover:bg-blue-700 light:focus:ring-blue-800">Reset</button>
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Reset</button>
         <button class="" type="submit" (click)="doSubmit()"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs w-full sm:w-auto px-5 py-2.5 text-center light:bg-blue-600 light:hover:bg-blue-700 light:focus:ring-blue-800">Submit</button>
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
     </div>
 </div>

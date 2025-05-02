@@ -1,4 +1,4 @@
-<div class="flex h-screen">
+<div class="flex h-screen bg-white dark:bg-gray-800">
   <!-- Sidebar -->
   <nav [class.w-48]="isExpanded" [class.w-15]="!isExpanded"
     class="bg-gray-800 text-white flex flex-col justify-between transition-all duration-300 overflow-hidden">
@@ -39,19 +39,23 @@
 
     <!-- Footer -->
     <div class="p-2 text-xs text-gray-400">
+      <a class="flex items-center p-1 rounded hover:bg-gray-700 mb-1" (click)="toggleDarkMode()">
+        <span class="material-icons text" [class.m-1]="isExpanded">{{this.isDarkMode ? 'light_mode' : 'dark_mode'}}</span>
+        <span *ngIf="isExpanded" class="text-sm">Toggle {{this.isDarkMode ? 'Light' : 'Dark'}} Mode</span>
+      </a>
       <span *ngIf="isExpanded">Taladpla 1.0<br>Response: {{message}}<br>Database: {{messageDb}}</span>
       <span *ngIf="!isExpanded">TP 1.0</span>
     </div>
   </nav>
 
   <!-- Main Content -->
-  <main class="flex-1 bg-gray-100 p-3 overflow-auto container mx-auto">
-    <div class="bg-white rounded-lg shadow-sm light:bg-gray-900 m-1 p-5">
+  <main class="flex-1 bg-gray-800 p-3 overflow-auto container mx-auto ">
+    <div class="bg-white rounded-lg shadow-sm dark:bg-gray-900 m-1 p-5 transition-colors duration-300">
       <router-outlet></router-outlet>
       <footer>
         <div class="w-full max-w-screen-xl mx-auto md:py-4">
-          <hr class="my-6 border-gray-200 sm:mx-auto light:border-gray-700 lg:my-8" />
-          <span class="block text-sm text-gray-500 sm:text-center light:text-gray-400">© 2025 <a href="https://flowbite.com/"
+          <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+          <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="https://flowbite.com/"
               class="hover:underline">Taladpla™</a> All Rights Reserved.</span>
         </div>
       </footer>

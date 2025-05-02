@@ -9,20 +9,20 @@
         </svg>
     </button> -->
     <input #comboBtnArea type="text" [id]="'dropdownDefaultInput_' + optionKey" (blur)="onClickDropdown('blur')" (focus)="onClickDropdown('focus')" (input)="onChangeTextBox()" [(ngModel)]="textBoxData"
-        class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+        class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         [placeholder]="'Input ' + optionKey + ' here'" />
     <!-- Dropdown menu -->
     <div class="relative text-left pt-1">
         <div id="dropdown" [class.hidden]="!toggleStatus"
-            class="absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-xl w-full light:bg-gray-700">
-            <ul #comboArea class="py-2 text-xs text-gray-700 light:text-gray-200" aria-labelledby="dropdownDefaultButton">
+            class="absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-xl w-full dark:bg-gray-700">
+            <ul #comboArea class="py-2 text-xs text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                 <!-- <li class="px-2 py-1">
                     <input type="text" id="company" (input)="onChangeTextBox()" [(ngModel)]="textBoxData"
-                        class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+                        class="bg-gray-50 border border-gray-300 py-1 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Search" />
                 </li> -->
                 <li *ngFor="let option of options;" (click)="onSelectDropdown(option)">
-                    <a class="block px-4 py-1 hover:bg-gray-100 light:hover:bg-gray-600 light:hover:text-white cursor-pointer">{{option.name}}</a>
+                    <a class="block px-4 py-1 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer">{{option.name}}</a>
                 </li>
             </ul>
         </div>
