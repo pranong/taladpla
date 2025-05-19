@@ -133,7 +133,7 @@ export class SearchDocumentComponent implements OnInit {
             valueKey: "isSelected",
             sortable: false,
             searchable: false,
-            style: "sticky left-[15px] z-20",
+            style: "sticky left-[0px] z-20",
           },
           {
             columnType: "text",
@@ -141,7 +141,7 @@ export class SearchDocumentComponent implements OnInit {
             valueKey: "issueDate",
             sortable: true,
             searchable: true,
-            style: "sticky left-[50px] z-20",
+            style: "sticky left-[40px] z-20",
           },
           {
             columnType: "text",
@@ -149,7 +149,7 @@ export class SearchDocumentComponent implements OnInit {
             valueKey: "equipmentName",
             sortable: true,
             searchable: true,
-            style: "sticky left-[130px] z-20",
+            style: "sticky left-[120px] z-20",
           },
           {
             columnType: "text",

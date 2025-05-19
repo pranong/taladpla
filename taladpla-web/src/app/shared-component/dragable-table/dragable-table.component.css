@@ -17,15 +17,15 @@
 
 .selectable-item {
     @apply cursor-pointer p-2 border border-gray-200 m-0.5 dark:border-gray-600;
-  }
+}
   
-  .selectable-item-selected {
-    @apply bg-slate-600 text-white dark:bg-slate-800;
-  }
+.selectable-item-selected {
+    @apply bg-slate-600 text-white dark:bg-slate-800 z-20;
+}
   
-  .selectable-item-selected:hover {
-    @apply bg-slate-700 text-white dark:bg-slate-900;
-  }
+.selectable-item-selected:hover {
+    @apply bg-slate-700 text-white dark:bg-slate-900 z-20;
+}
 
 .drag-container {
     user-select: none;
