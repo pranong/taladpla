@@ -23,7 +23,7 @@ router.get('/version', (req, res) => {
 
 router.get('/dbStatus',async (req, res) => {
   try {
-    let data = await knex('settings');
+    let data = await knex('sys_config');
     res.send({
       status: true,
       data,

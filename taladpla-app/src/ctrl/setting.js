@@ -6,7 +6,7 @@ module.exports = ctrl
 
 ctrl.getSetting = async (req, res) => {
     try {
-      let rows = await knex('settings')
+      let rows = await knex('sys_config');
       res.send({
         status: true,
         rows,
