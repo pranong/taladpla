@@ -9,7 +9,7 @@ router.post('/get-setting', settingCtrl.getSetting)
 
 router.get('/settingStat', async (req, res) => {
     try {
-      let rows = await knex('settings')
+      let rows = await knex('sys_config');
       res.send({
         status: true,
         rows,
