@@ -27,11 +27,11 @@ app.use((req, res, next) => {
   next();
 });
 //app.use(cors());
-// app.use(cors({
-//   origin: process.env.CORS_IP || 'http://localhost:4200',
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//   credentials: true
-// }));
+app.use(cors({
+  origin: process.env.CORS_IP || 'http://localhost:4200',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 // ---------------------------- Schedule ----------------------------
 // const date = new Date(2012, 11, 21, 5, 30, 0);
 // const job = schedule.scheduleJob({ hour: 10, minute: 18 }, async function () { // at 10:15 daily
